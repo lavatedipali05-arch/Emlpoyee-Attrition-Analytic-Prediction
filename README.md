@@ -48,7 +48,7 @@ streamlit run app.py
 🌐 Live Demo
 
 👉 Deployed on Streamlit Cloud
-(Add your link here after deployment)
+(https://emlpoyee-attrition-analytic-prediction-gryh7kranr7spkppjh8rvd.streamlit.app/?embed_options=light_theme,show_toolbar,dark_theme)
 
 ---
 
