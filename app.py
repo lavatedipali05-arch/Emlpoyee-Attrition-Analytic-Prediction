@@ -42,6 +42,11 @@ with tab1:
     ax_job_sat.set_xlabel("Job Satisfaction Level (1=Low, 4=High)")
     ax_job_sat.set_ylabel("Number of Employees")
     st.pyplot(fig_job_sat)
+
+# Features and target
+X = df.drop("Attrition", axis=1)
+y = df["Attrition_num"]
+
 # -------------------- 👤 PREDICTION --------------------
 with tab2:
 
