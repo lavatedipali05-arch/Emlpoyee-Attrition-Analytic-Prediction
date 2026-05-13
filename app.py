@@ -74,22 +74,20 @@ with tab2:
                 options=df[col].unique()
             )
 
-    if st.button("Predict"):
+   if st.button("Predict"):
 
-        input_df = pd.DataFrame([input_data])
+    input_df = pd.DataFrame([input_data])
 
-        prediction = pipeline.predict(input_df)[0]
-        prob = pipeline.predict_proba(input_df)[0][1]
+    input_df = input_df.reindex(columns=X.columns, fill_value=0)
 
-        if prediction == 1:
-            st.error(
-                f"⚠ High Risk (Leave) - Probability: {prob:.2f}"
-            )
+    prediction = pipeline.predict(input_df)[0]
 
-        else:
-            st.success(
-                f"✅ Low Risk (Stay) - Probability: {prob:.2f}"
-            )
+    prob = pipeline.predict_proba(input_df)[0][1]
+
+    if prediction == 1:
+        st.error(f"⚠ High Risk (Leave) - Probability: {prob:.2f}")
+    else:
+        st.success(f"✅ Low Risk (Stay) - Probability: {prob:.2f}") 
 
 
 # ------------------- 📈 INSIGHTS -------------------
