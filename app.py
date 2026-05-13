@@ -24,7 +24,6 @@ with tab1:
 
 import plotly.express as px
 
-# Pie Chart
 st.subheader("Employee Attrition Distribution")
 
 attrition_counts = df["Attrition"].value_counts()
@@ -33,8 +32,6 @@ fig = px.pie(
     values=attrition_counts.values,
     names=attrition_counts.index,
     title="Employee Attrition Analysis",
-    
-    
     color_discrete_sequence=px.colors.qualitative.Bold
 )
 
@@ -44,11 +41,18 @@ fig.update_traces(
     marker=dict(line=dict(color='white', width=3))
 )
 
-fig.update_layout(
-    title_font_size=24
-)
+fig.update_layout(title_font_size=24)
 
 st.plotly_chart(fig, use_container_width=True)
+    
+    
+    color_discrete_sequence=px.colors.qualitative.Bold
+)
+
+fig.update_traces(
+    textinfo='percent+label',
+    pull=[0.05, 0.05],
+    marker=dict(line=dict(color='white', wid
 
 attrition_counts =
 df["Attrition"].value_counts()
