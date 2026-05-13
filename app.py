@@ -19,7 +19,24 @@ tab1, tab2, tab3 = st.tabs(["📊 Dashboard", "🔮 Prediction", "📈 Insights"
 
 # ------------------- 📊 DASHBOARD -------------------
 with tab1:
+
     st.subheader("Attrition Overview")
+
+    # Pie Chart
+    attrition_counts = df['Attrition'].value_counts()
+
+    fig, ax = plt.subplots()
+
+    ax.pie(
+        attrition_counts,
+        labels=attrition_counts.index,
+        autopct='%1.1f%%',
+        startangle=90
+    )
+
+    ax.axis('equal')
+
+    st.pyplot(fig)
 
     attrition_counts = df['Attrition'].value_counts()
 
