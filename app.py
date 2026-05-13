@@ -52,7 +52,8 @@ y = df["Attrition_num"]
 
 # -------------------- 👤 PREDICTION --------------------
 with tab2:
-sample_data = df.iloc[0].to_dict()
+    st.subheader("Employee Prediction")
+   sample_data = df.iloc[0].to_dict()
 
 # Remove target columns
 sample_data.pop("Attrition", None)
