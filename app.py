@@ -24,7 +24,6 @@ with tab1:
     import plotly.express as px
 
 st.subheader("Employee Attrition Distribution")
-
 attrition_counts = 
 df["Attrition"].value_counts()
 
