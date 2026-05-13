@@ -44,15 +44,6 @@ fig.update_traces(
 fig.update_layout(title_font_size=24)
 
 st.plotly_chart(fig, use_container_width=True)
-    
-    
-    color_discrete_sequence=px.colors.qualitative.Bold
-)
-
-fig.update_traces(
-    textinfo='percent+label',
-    pull=[0.05, 0.05],
-    marker=dict(line=dict(color='white', wid
 
 attrition_counts =
 df["Attrition"].value_counts()
