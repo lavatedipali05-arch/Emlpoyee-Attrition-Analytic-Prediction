@@ -33,6 +33,8 @@ fig = px.pie(
     values=attrition_counts.values,
     names=attrition_counts.index,
     title="Employee Attrition Analysis",
+    
+    
     color_discrete_sequence=px.colors.qualitative.Bold
 )
 
@@ -47,9 +49,7 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
-    
-
-    attrition_counts = df['Attrition'].value_counts()
+      attrition_counts = df['Attrition'].value_counts()
 
     fig, ax = plt.subplots()
     ax.bar(attrition_counts.index, attrition_counts.values)
