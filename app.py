@@ -42,50 +42,50 @@ with tab1:
     ax_job_sat.set_xlabel("Job Satisfaction Level (1=Low, 4=High)")
     ax_job_sat.set_ylabel("Number of Employees")
     st.pyplot(fig_job_sat)
-
-# ------------------- 🔮 PREDICTION --------------
-    st.pyplot(fig_job_sat)
-
-# Features and target
-X = df.drop("Attrition", axis=1)
-y = df["Attrition_num"]
-
 # -------------------- 👤 PREDICTION --------------------
 with tab2:
+
     st.subheader("Employee Prediction")
-   sample_data = df.iloc[0].to_dict()
 
-# Remove target columns
-sample_data.pop("Attrition", None)
-sample_data.pop("Attrition_num", None)
+    sample_data = df.iloc[0].to_dict()
 
-input_data = {}
+    # Remove target columns
+    sample_data.pop("Attrition", None)
+    sample_data.pop("Attrition_num", None)
 
-for col, val in sample_data.items():
+    input_data = {}
 
-    if isinstance(val, (int, float)):
-        input_data[col] = st.number_input(
-            col,
-            value=float(val)
-        )
+    for col, val in sample_data.items():
 
-    else:
-        input_data[col] = st.selectbox(
-            col,
-            options=df[col].unique()
-        )
+        if isinstance(val, (int, float)):
+            input_data[col] = st.number_input(
+                col,
+                value=float(val)
+            )
 
+        else:
+            input_data[col] = st.selectbox(
+                col,
+                options=df[col].unique()
+            )
 
     if st.button("Predict"):
+
         input_df = pd.DataFrame([input_data])
 
         prediction = pipeline.predict(input_df)[0]
         prob = pipeline.predict_proba(input_df)[0][1]
 
         if prediction == 1:
-            st.error(f"⚠️ High Risk (Leave) — Probability: {prob:.2f}")
+            st.error(
+                f"⚠ High Risk (Leave) - Probability: {prob:.2f}"
+            )
+
         else:
-            st.success(f"✅ Low Risk (Stay) — Probability: {prob:.2f}")
+            st.success(
+                f"✅ Low Risk (Stay) - Probability: {prob:.2f}"
+            )
+
 
 # ------------------- 📈 INSIGHTS -------------------
 with tab3:
