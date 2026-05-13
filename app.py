@@ -21,29 +21,7 @@ tab1, tab2, tab3 = st.tabs(["📊 Dashboard", "🔮 Prediction", "📈 Insights"
 with tab1:
 
     st.subheader("Attrition Overview")
-    import plotly.express as px
-
-st.subheader("Employee Attrition Distribution")
-attrition_counts = 
-df["Attrition"].value_counts()
-
-fig = px.pie(
-    values=attrition_counts.values,
-    names=attrition_counts.index,
-    title="Employee Attrition Analysis",
     
-    color_discrete_sequence=px.colors.qualitative.Bold
-)
-
-fig.update_traces(
-    textinfo='percent+label',
-    pull=[0.05, 0.05],
-    marker=dict(line=dict(color='white', width=3))
-)
-
-fig.update_layout(title_font_size=24)
-
-st.plotly_chart(fig, use_container_width=True)
 
     ax.bar(attrition_counts.index, attrition_counts.values)
     ax.set_title("Attrition Distribution")
