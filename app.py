@@ -45,9 +45,6 @@ fig.update_layout(title_font_size=24)
 
 st.plotly_chart(fig, use_container_width=True)
 
-  attrition_counts =
-df["Attrition"].value_counts()
-
     fig, ax = plt.subplots()
     ax.bar(attrition_counts.index, attrition_counts.values)
     ax.set_title("Attrition Distribution")
