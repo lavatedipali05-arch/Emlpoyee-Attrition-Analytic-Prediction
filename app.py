@@ -52,17 +52,28 @@ y = df["Attrition_num"]
 
 # -------------------- 👤 PREDICTION --------------------
 with tab2:
+sample_data = df.iloc[0].to_dict()
 
-    st.subheader("Employee Prediction")
+# Remove target columns
+sample_data.pop("Attrition", None)
+sample_data.pop("Attrition_num", None)
 
-    sample_data = X.iloc[0].to_dict()
-    input_data = {}
+input_data = {}
 
-    for col, val in sample_data.items():
-        if isinstance(val, (int, float)):
-            input_data[col] = st.number_input(col, value=float(val))
-        else:
-            input_data[col] = st.selectbox(col, df[col].unique())
+for col, val in sample_data.items():
+
+    if isinstance(val, (int, float)):
+        input_data[col] = st.number_input(
+            col,
+            value=float(val)
+        )
+
+    else:
+        input_data[col] = st.selectbox(
+            col,
+            options=df[col].unique()
+        )
+
 
     if st.button("Predict"):
         input_df = pd.DataFrame([input_data])
