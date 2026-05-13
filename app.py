@@ -167,23 +167,3 @@ with tab3:
         st.pyplot(fig2)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-@st.cache_resource
-def load_pipeline():
-    try:
-        return joblib.load(os.path.join(BASE_DIR, "pipeline.pkl"))
-    except Exception as e:
-        st.error(f"❌ Error loading pipeline: {str(e)}")
-        st.stop()
-
-@st.cache_data
-def load_data():
-    try:
-        return pd.read_csv(os.path.join(BASE_DIR, "employee Attrition CSV file 1.csv"))
-    except Exception as e:
-        st.error(f"❌ Error loading data: {str(e)}")
-        st.stop()
-
-pipeline = load_pipeline()
-df = load_data()
-    except Exception as e:
-        st.warning(f)
