@@ -21,8 +21,7 @@ tab1, tab2, tab3 = st.tabs(["📊 Dashboard", "🔮 Prediction", "📈 Insights"
 with tab1:
 
     st.subheader("Attrition Overview")
-
-import plotly.express as px
+    import plotly.express as px
 
 st.subheader("Employee Attrition Distribution")
 
