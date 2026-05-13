@@ -47,7 +47,7 @@ with tab1:
 with tab2:
     st.subheader("Employee Prediction")
 
-    sample_data = df.drop("Attrition", axis=1).iloc[0].to_dict()
+    sample_data = X.iloc[0].to_dict()
     input_data = {}
 
     for col, val in sample_data.items():
