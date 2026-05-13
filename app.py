@@ -73,7 +73,8 @@ with tab2:
                 col,
                 options=df[col].unique()
             )
- if st.button("Predict"):
+
+if st.button("Predict"):
 
     input_df = pd.DataFrame([input_data])
 
