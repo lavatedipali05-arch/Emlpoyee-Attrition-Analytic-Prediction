@@ -25,12 +25,14 @@ with tab1:
 
 st.subheader("Employee Attrition Distribution")
 
-attrition_counts = df["Attrition"].value_counts()
+attrition_counts = 
+df["Attrition"].value_counts()
 
 fig = px.pie(
     values=attrition_counts.values,
     names=attrition_counts.index,
     title="Employee Attrition Analysis",
+    
     color_discrete_sequence=px.colors.qualitative.Bold
 )
 
