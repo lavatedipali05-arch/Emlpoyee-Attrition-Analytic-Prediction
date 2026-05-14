@@ -167,4 +167,4 @@ with tab3:
         st.pyplot(fig2)
 
     except Exception as e:
-        st.warning(f
+        st.warning(f)
