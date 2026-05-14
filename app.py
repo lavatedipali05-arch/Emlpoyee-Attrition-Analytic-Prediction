@@ -58,7 +58,7 @@ input_data = {}
 
 # Input fields
 for col in X.columns:
-    ...
+    
 if st.button("predict"):
 
     # Categorical columns
