@@ -1,10 +1,13 @@
 import streamlit as st
 import pandas as pd
-import joblib
+import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns # Added seaborn import
-import os # Import the os module
+import seaborn as sns
+import joblib
 
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.pipeline import Pipeline
+model = joblib.load("model.pkl")
 # --- Custom CSS Styling ---
 st.markdown("""
 <style>
