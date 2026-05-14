@@ -7,7 +7,7 @@ import joblib
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
-model = joblib.load("model.pkl")
+
 # --- Custom CSS Styling ---
 st.markdown("""
 <style>
