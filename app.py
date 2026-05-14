@@ -51,7 +51,7 @@ with tab1:
 # PREDICTION SECTION
 # =========================
 
-st.subheader("AI Employee Attrition Prediction")
+st.subheader(" Employee Attrition Prediction")
 
 # Store user inputs
 input_data = {}
@@ -80,14 +80,8 @@ if st.button("Predict"):
 
     # Convert to DataFrame
     input_df = pd.DataFrame([input_data])
-
-    # Match training columns
-    input_df = input_df.reindex(
-        columns=X.columns,
-        fill_value=0
-    )
-
-    # Prediction
+    
+     # Prediction
     prediction = pipeline.predict(input_df)[0]
 
     # Probability
