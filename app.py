@@ -56,10 +56,24 @@ st.subheader(" Employee Attrition Prediction")
 # Store user inputs
 input_data = {}
 
-# Input fields
+# Create input fields
 for col in X.columns:
-    
-if st.button("predict"):
+
+    # Categorical columns
+    if df[col].dtype == "object":
+
+        input_data[col] = st.selectbox(
+            f"Select {col}",
+            df[col].unique()
+        )
+
+    # Numerical columns
+    else:
+
+        input_data[col] = st.number_input(
+            f"Enter {col}",
+            value=float(df[col].mean())
+        )
 
     # Categorical columns
     if df[col].dtype == "object":
