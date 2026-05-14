@@ -43,29 +43,72 @@ with tab1:
     ax_job_sat.set_ylabel("Number of Employees")
     st.pyplot(fig_job_sat)
 
-# ------------------- 🔮 PREDICTION -------------------
-with tab2:
-    st.subheader("Employee Prediction")
+# =========================
+# PREDICTION SECTION
+# =========================
 
-    sample_data = df.drop("Attrition", axis=1).iloc[0].to_dict()
-    input_data = {}
+st.subheader("AI Employee Attrition Prediction")
 
-    for col, val in sample_data.items():
-        if isinstance(val, (int, float)):
-            input_data[col] = st.number_input(col, value=float(val))
-        else:
-            input_data[col] = st.selectbox(col, df[col].unique())
+# Store user inputs
+input_data = {}
 
-    if st.button("Predict"):
-        input_df = pd.DataFrame([input_data])
+# Input fields
+for col in X.columns:
 
-        prediction = pipeline.predict(input_df)[0]
-        prob = pipeline.predict_proba(input_df)[0][1]
+    # Categorical columns
+    if df[col].dtype == "object":
 
-        if prediction == 1:
-            st.error(f"⚠️ High Risk (Leave) — Probability: {prob:.2f}")
-        else:
-            st.success(f"✅ Low Risk (Stay) — Probability: {prob:.2f}")
+        input_data[col] = st.selectbox(
+            f"Select {col}",
+            df[col].unique()
+        )
+
+    # Numerical columns
+    else:
+
+        input_data[col] = st.number_input(
+            f"Enter {col}",
+            value=float(df[col].mean())
+        )
+
+# Predict Button
+if st.button("Predict"):
+
+    # Convert to DataFrame
+    input_df = pd.DataFrame([input_data])
+
+    # Match training columns
+    input_df = input_df.reindex(
+        columns=X.columns,
+        fill_value=0
+    )
+
+    # Prediction
+    prediction = pipeline.predict(input_df)[0]
+
+    # Probability
+    prob = pipeline.predict_proba(input_df)[0][1]
+
+    # Results
+    st.subheader("Prediction Result")
+
+    if prediction == 1:
+
+        st.error(
+            "⚠ Employee is likely to leave the company"
+        )
+
+    else:
+
+        st.success(
+            "✅ Employee is likely to stay in the company"
+        )
+
+    # Probability Score
+    st.metric(
+        label="Attrition Probability",
+        value=f"{prob*100:.2f}%"
+    )
 
 # ------------------- 📈 INSIGHTS -------------------
 with tab3:
