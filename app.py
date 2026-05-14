@@ -9,6 +9,10 @@ import os # Import the os module
 pipeline = joblib.load("pipeline.pkl")
 # Use os.path.join to construct the path relative to the script's directory
 df = pd.read_csv(os.path.join(os.path.dirname(__file__), "employee Attrition CSV file 1.csv"))
+# Features and Target
+X = df.drop("Attrition", axis=1)
+
+y = df["Attrition"]
 
 st.set_page_config(page_title="HR Analytics Dashboard", layout="wide")
 
