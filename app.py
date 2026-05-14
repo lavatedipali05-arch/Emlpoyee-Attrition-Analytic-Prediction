@@ -165,6 +165,31 @@ with tab3:
         ax2.set_xlabel("Importance")
         ax2.set_ylabel("Feature Name")
         st.pyplot(fig2)
+        # Existing charts
+st.subheader("Attrition Distribution")
+st.bar_chart(df["Attrition"].value_counts())
+
+# Heatmap section add here
+st.subheader("Correlation Heatmap")
+
+numeric_df = df.select_dtypes(include=['int64', 'float64'])
+
+corr = numeric_df.corr()
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+sns.heatmap(
+    corr,
+    annot=True,
+    cmap="coolwarm",
+    fmt=".2f",
+    linewidths=0.5,
+    ax=ax
+)
+
+st.pyplot(fig)
+
+# Next charts below
 
     except Exception as e:
-        st.warning(f
+        st.warning(f)
